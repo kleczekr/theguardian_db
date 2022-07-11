@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
+// const d3 = require("d3");
 const connectDB = require("./config/db");
 const MongoStore = require("connect-mongo");
 const session = require("express-session");
@@ -15,6 +16,10 @@ const app = express();
 // body parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// specify the HTML engine for Express
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "html");
 
 //sessions
 app.use(

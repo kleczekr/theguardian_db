@@ -22,7 +22,103 @@
       referrerpolicy="no-referrer"
     ></script>
     <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+      integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <title>Locations</title>
   </head>
-  <body></body>
+  <body>
+    <div class="wrapper">
+      <p><b>From</b>:</p>
+      <input type="date" name="fromDate" id="fromDate" />
+      <p><b>To</b>:</p>
+      <input type="date" name="toDate" id="toDate" />
+    </div>
+    <div class="float-container">
+      <div class="float-child-small">
+        <input
+          type="checkbox"
+          class="myCheckbox"
+          id="am"
+          value="Angela Merkel"
+          checked
+        /><label for="am">Angela Merkel</label>
+      </div>
+      <div class="float-child-small">
+        <input
+          type="checkbox"
+          class="myCheckbox"
+          id="bs"
+          value="Bernie Sanders"
+          checked
+        /><label for="am">Bernie Sanders</label>
+      </div>
+      <div class="float-child-small">
+        <input
+          type="checkbox"
+          class="myCheckbox"
+          id="bj"
+          value="Boris Johnson"
+          checked
+        /><label for="am">Boris Johnson</label>
+      </div>
+      <div class="float-child-small">
+        <input
+          type="checkbox"
+          class="myCheckbox"
+          id="em"
+          value="Emmanuel Macron"
+          checked
+        /><label for="am">Emmanuel Macron</label>
+      </div>
+      <div class="float-child-small">
+        <input
+          type="checkbox"
+          class="myCheckbox"
+          id="ja"
+          value="Jacinda Ardern"
+          checked
+        /><label for="am">Jacinda Ardern</label>
+      </div>
+      <div class="float-child-small">
+        <input
+          type="checkbox"
+          class="myCheckbox"
+          id="jt"
+          value="Justin Trudeau"
+          checked
+        /><label for="am">Justin Trudeau</label>
+      </div>
+      <div class="float-child-small">
+        <input
+          type="checkbox"
+          class="myCheckbox"
+          id="tm"
+          value="Theresa May"
+          checked
+        /><label for="am">Theresa May</label>
+      </div>
+    </div>
+    <div class="float-container">
+      <div
+        class="float-child-big"
+        id="vizcontainer"
+        style="padding: 20px; margin: 20px"
+      ></div>
+    </div>
+    <div class="float-container">
+      <div
+        class="float-child-big"
+        id="listcontainer"
+        style="padding: 20px; margin: 20px"
+      ></div>
+    </div>
+
+    <script type="text/javascript" src="visuals.js"></script>
+  </body>
 </html>
