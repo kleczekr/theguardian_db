@@ -9,9 +9,9 @@ let today = currentDate.toISOString().slice(0, 10);
 const container = "#vizcontainer";
 const listcontainer = "#listcontainer";
 const bisectDate = d3.bisector((d) => d.date).left;
-const margin = { top: 60, right: 30, bottom: 50, left: 50 },
+const margin = { top: 60, right: 30, bottom: 250, left: 50 },
   width = 1060 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom;
+  height = 600 - margin.top - margin.bottom;
 const keysOrig = [
   "Justin Trudeau",
   "Theresa May",
@@ -69,7 +69,7 @@ d3.selectAll(".myCheckbox").on("change", function () {
   load_data();
 });
 
-function draw_chart(data, detail) {
+function draw_chart(data, detail, input) {
   // append the svg object to the body of the page
   const svg = d3
     .select(container)
@@ -163,6 +163,40 @@ function draw_chart(data, detail) {
     .attr("class", (d) => "myArea " + d.key)
     .style("fill", (d) => color(d.key))
     .attr("d", area);
+
+  // eventLines indicate the events governed by user input and saved in the database
+  const eventLines = svg
+    .append("g")
+    .attr("fill", "#FF6F61")
+    .attr("fill-opacity", 0.8)
+    .selectAll("rect")
+    .data(input)
+    .enter()
+    .append("rect")
+    .attr("x", (d) => x(d.date))
+    .attr("width", 0.8) //x.bandwidth())
+    .attr("y", y(0))
+    .attr("height", 100);
+  // eventTexts indicate the events governed by user input and saved in the database
+  const eventTexts = svg
+    .append("g")
+    .attr("fill", "#333333")
+    .selectAll("text")
+    .data(input)
+    .enter()
+    .append("text")
+    .attr("id", (d) => d.nameInput)
+    .attr("class", "pointer-name")
+    .attr("text-anchor", "end")
+    .attr("font-size", 8)
+    .attr("x", (d) => x(d.date))
+    .attr("y", y(0) + 100)
+    .attr("transform", (d) => {
+      const xDim = x(d.date);
+      const yDim = y(0) + 100;
+      return `rotate(-25, ${xDim}, ${yDim})`;
+    })
+    .text((d) => d.textInput);
 
   // FROM HERE TILL UPDATECHART THERE IS A DEFINITION
   // OF A TOOLTIP
@@ -492,11 +526,16 @@ async function awaitData() {
 
 function load_data() {
   Promise.all([awaitData()]).then((values) => {
-    data = values[0].data;
-    console.log(data);
+    data = values[0].data[0];
+    input = values[0].data[1];
+    // console.log(data);
+    // console.log(input);
     data.map((d) => {
       d.webPublicationDate = d.webPublicationDate.slice(0, 10);
       d.date = parser(d.webPublicationDate);
+    });
+    input.map((d) => {
+      d.date = parser(d.date.slice(0, 10));
     });
 
     const flatRoll = d3.flatRollup(
@@ -538,8 +577,9 @@ function load_data() {
     res = res.sort(sortByDateAscending);
 
     console.log(res);
+    console.log(input);
 
-    draw_chart(res, data);
+    draw_chart(res, data, input);
   });
 }
 

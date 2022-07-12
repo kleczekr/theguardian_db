@@ -21,7 +21,11 @@ async function run() {
 
     console.log(guardian);
 
-    return guardian;
+    const input_col = database.collection("inputs");
+    const input_prod = input_col.find({});
+    let input = await input_prod.toArray();
+
+    return [guardian, input];
   } catch (err) {
     console.error(err);
   }
