@@ -65,6 +65,10 @@ router.post("/", async (req, res) => {
     // req.body.user = req.user.id;
     console.log(req.body);
     await Input.create(req.body);
+    // You need to refresh the cache, as it needs to download the
+    // user entry text and date from the database
+    all_articles = await run();
+    myCache.set("allArticles", all_articles, 86400);
     res.redirect("/");
   } catch (err) {
     console.error(err);
