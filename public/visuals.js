@@ -1,3 +1,5 @@
+// const input = require("../models/Input");
+
 const parser = d3.utcParse("%Y-%m-%d");
 const formatTime = d3.timeFormat("%Y-%m-%d");
 const currentDate = new Date();
@@ -20,6 +22,13 @@ const keysOrig = [
   "Bernie Sanders",
 ];
 let keys = keysOrig;
+
+d3.select("#submit_note").on("click", function () {
+  let input = d3.select("#input").node().value;
+  let eventDate = d3.select("#eventDate").node().value;
+  let figure = d3.select("#figure").node().value;
+  console.log(input, eventDate, figure);
+});
 
 d3.select("#fromDate").on("input", function () {
   datepickFrom(this);

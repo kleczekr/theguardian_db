@@ -56,7 +56,7 @@
           id="bs"
           value="Bernie Sanders"
           checked
-        /><label for="am">Bernie Sanders</label>
+        /><label for="bs">Bernie Sanders</label>
       </div>
       <div class="float-child-small">
         <input
@@ -65,7 +65,7 @@
           id="bj"
           value="Boris Johnson"
           checked
-        /><label for="am">Boris Johnson</label>
+        /><label for="bj">Boris Johnson</label>
       </div>
       <div class="float-child-small">
         <input
@@ -74,7 +74,7 @@
           id="em"
           value="Emmanuel Macron"
           checked
-        /><label for="am">Emmanuel Macron</label>
+        /><label for="em">Emmanuel Macron</label>
       </div>
       <div class="float-child-small">
         <input
@@ -83,7 +83,7 @@
           id="ja"
           value="Jacinda Ardern"
           checked
-        /><label for="am">Jacinda Ardern</label>
+        /><label for="ja">Jacinda Ardern</label>
       </div>
       <div class="float-child-small">
         <input
@@ -92,7 +92,7 @@
           id="jt"
           value="Justin Trudeau"
           checked
-        /><label for="am">Justin Trudeau</label>
+        /><label for="jt">Justin Trudeau</label>
       </div>
       <div class="float-child-small">
         <input
@@ -101,8 +101,69 @@
           id="tm"
           value="Theresa May"
           checked
-        /><label for="am">Theresa May</label>
+        /><label for="tm">Theresa May</label>
       </div>
+    </div>
+    <!-- <div class="float-container">
+      <form action="/" method="POST"
+        class="float-child-big"
+        id="inputcontainer"
+        style="padding: 20px; margin: 20px"
+      >
+      <div class="input-field">
+        <input
+          type="text"
+          id="input"
+          placeholder="Describe event"
+          style="width: 100%"
+        /></div>
+        <div class="input-field">
+        <input type="date" id="eventDate" /></div>
+        <div class="input-field">
+        <select name="figure" id="figure">
+          <option value="am">Angela Merkel</option>
+          <option value="bs">Bernie Sanders</option>
+          <option value="bj">Boris Johnson</option>
+          <option value="em">Emmanuel Macron</option>
+          <option value="ja">Jacinda Ardern</option>
+          <option value="jt">Justin Trudeau</option>
+          <option value="tm">Theresa May</option>
+        </select></div>
+        <input type="submit" value="Save" id="submit_note" class="btn">
+      </div>
+    </div> -->
+    <div class="row">
+      <form action="/" method="POST" class="float-child-big">
+        <div class="four columns">
+          <div class="input-field">
+            <input type="text" id="textInput" name="textInput" />
+            <label for="name">Event</label>
+          </div>
+        </div>
+        <div class="three columns">
+          <div class="input-field">
+            <select name="nameInput" id="nameInput">
+              <option value="am">Angela Merkel</option>
+              <option value="bs">Bernie Sanders</option>
+              <option value="bj">Boris Johnson</option>
+              <option value="em">Emmanuel Macron</option>
+              <option value="ja">Jacinda Ardern</option>
+              <option value="jt">Justin Trudeau</option>
+              <option value="tm">Theresa May</option>
+            </select>
+            <label for="figure">Name</label>
+          </div>
+        </div>
+        <div class="three columns">
+          <div class="input-field">
+            <input type="date" id="eventDate" name="date" />
+          </div>
+          <label for="input-field">Date</label>
+        </div>
+        <div class="two columns">
+          <input type="submit" value="Submit" class="btn" />
+        </div>
+      </form>
     </div>
     <div class="float-container">
       <div

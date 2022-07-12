@@ -3,7 +3,8 @@ const { MongoClient } = require("mongodb");
 const router = express.Router();
 const client = new MongoClient(process.env.MONGO_URI);
 const NodeCache = require("node-cache");
-const Guardian = require("../models/Guardian");
+// const Guardian = require("../models/Guardian");
+const Input = require("../models/Input");
 
 // stdTTL is the default time-to-live for each cache entry
 const myCache = new NodeCache({ stdTTL: 86400 });
@@ -51,6 +52,20 @@ router.get("/guardian/json", async function (req, res) {
   }
   var data = all_articles;
   res.send(data);
+});
+
+// @desc    Process the add form
+// @route   POST /notes
+router.post("/", async (req, res) => {
+  try {
+    // req.body.user = req.user.id;
+    console.log(req.body);
+    await Input.create(req.body);
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+    res.render("error/500");
+  }
 });
 
 module.exports = router;
